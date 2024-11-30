@@ -9,7 +9,20 @@ class UserProvider with ChangeNotifier {
   // getter
   List<User> get users => _users;
 
+  // initialize
+  UserProvider() {
+    fetchAllUsers();
+  }
+
   //todo: fetch user
+  Future<void> fetchAllUsers() async {
+    try {
+      _users = await _userServices.getAllUsers();
+      notifyListeners();
+    } catch (error) {
+      print("Error geting user with provide: $error");
+    }
+  }
 
   // todo: create user
   Future<void> addUser(User user) async {
