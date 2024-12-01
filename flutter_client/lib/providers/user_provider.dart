@@ -48,4 +48,20 @@ class UserProvider with ChangeNotifier {
       print("deleting user with provider: $error");
     }
   }
+
+  // todo: update user
+  Future<void> updateUser(User user) async {
+    try {
+      await _userServices.updateUser(user);
+
+      // get the index of uodated user
+      int index = _users.indexWhere((userinList) => userinList.id == user.id);
+      if (index != -1) {
+        _users[index] = user;
+        notifyListeners();
+      }
+    } catch (error) {
+      print("Error updating user with provider $error");
+    }
+  }
 }

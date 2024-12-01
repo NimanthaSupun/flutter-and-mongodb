@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_client/providers/user_provider.dart';
 import 'package:flutter_client/screens/add_user.dart';
+import 'package:flutter_client/screens/edit_users.dart';
 import 'package:provider/provider.dart';
 
 class UserListScreen extends StatelessWidget {
@@ -51,6 +52,16 @@ class UserListScreen extends StatelessWidget {
                   },
                   icon: const Icon(Icons.delete),
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  EditUsersSreen(
+                        user: user,
+                      ),
+                    ),
+                  );
+                },
               );
             },
           );

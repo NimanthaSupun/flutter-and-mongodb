@@ -57,10 +57,11 @@ class UserService {
     }
   }
 
+  // update user
   Future<void> updateUser(User user) async {
     try {
       final response = await http.put(
-        Uri.parse('$baseUrl/${user.id}'),
+        Uri.parse('$baseUrl/update/${user.id}'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8'
         },
