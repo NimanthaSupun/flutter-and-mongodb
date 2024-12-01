@@ -41,12 +41,14 @@ class UserListScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: userProvider.users.length,
             itemBuilder: (context, index) {
-              final  user = userProvider.users[index];
+              final user = userProvider.users[index];
               return ListTile(
                 title: Text(user.name),
                 subtitle: Text(user.email),
                 trailing: IconButton(
-                  onPressed: (){},
+                  onPressed: () {
+                    userProvider.deleteUser(user.id);
+                  },
                   icon: const Icon(Icons.delete),
                 ),
               );

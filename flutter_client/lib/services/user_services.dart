@@ -78,7 +78,7 @@ class UserService {
 
   Future<void> deleteUser(String id) async {
     try {
-      final response = await http.delete(Uri.parse('$baseUrl/$id'));
+      final response = await http.delete(Uri.parse('$baseUrl/delete/$id'));
       if (response.statusCode != 200) {
         print('Failed to delete user: ${response.statusCode}');
         throw Exception('Failed to delete user');

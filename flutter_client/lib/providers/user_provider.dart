@@ -35,4 +35,17 @@ class UserProvider with ChangeNotifier {
       print("Error adding user with provide package $error");
     }
   }
+
+  // todo: delete user
+  Future<void> deleteUser(String id) async {
+    try {
+      await _userServices.deleteUser(id);
+      _users.removeWhere(
+        (user) => user.id == id,
+      );
+      notifyListeners();
+    } catch (error) {
+      print("deleting user with provider: $error");
+    }
+  }
 }
